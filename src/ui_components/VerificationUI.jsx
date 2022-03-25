@@ -91,11 +91,35 @@ export const VerificationUI = (props) => {
                         <LabelStyle htmlFor='4'>Ссылка на профиль *</LabelStyle>
                         <InputStyle inputRef={props.refInput4} id='4' placeholder='instagram.com/skde…' onChange={(event) => props.onSaveValueFromInput(event, 4)} value={props.value4}></InputStyle>
                     </InputWrapperStyle>
+                    <Div height='50px' margin='0 0 20px'>
+                        <Div onClick={props.toggleShowCitiesList} height='50px' border='2px solid #E3E3E3' borderRadius='8px' padding='18px 30px 18px 15px' cursor='pointer'>
+                            <Paragraph lineHeight='100%'>
+                                {
+                                    props.city 
+                                    ? 
+                                    props.city 
+                                    : 
+                                    'Выберите город *'
+                                }
+                            </Paragraph>
+                        </Div>
+                        {
+                            props.showCitiesList 
+                            ? 
+                            <Div position='relative' zIndex='6'>
+                                <Div position='absolute' top='0' left='0' backgroundColor='#ffffff' border='2px solid #E3E3E3' borderRadius='8px' boxShadow='0px 5px 20px rgba(53, 50, 56, 0.14)' overflow='hidden'>
+                                    {props.citiesList}
+                                </Div>
+                            </Div>
+                            : 
+                            null
+                        }
+                    </Div>
                     <InputWrapperStyle>
                         <LabelStyle htmlFor='5'>Название организации/студии</LabelStyle>
                         <InputStyle inputRef={props.refInput5} id='5' placeholder='SK Design' onChange={(event) => props.onSaveValueFromInput(event, 5)} value={props.value5}></InputStyle>
                     </InputWrapperStyle>
-                    <Paragraph margin='0 0 20px' onClick={props.toggleAdditionalList}>
+                    <Paragraph margin='0 0 20px' cursor='pointer' onClick={props.toggleAdditionalList}>
                         {
                             props.showAdditionalList 
                             ? 
@@ -117,10 +141,36 @@ export const VerificationUI = (props) => {
                     {
                         props.showAdditionalList 
                         ? 
-                        <InputWrapperStyle width='100%'>
-                            <LabelStyle htmlFor='6'>Получатель</LabelStyle>
-                            <InputStyle inputRef={props.refInput6} id='6' placeholder='ФИО' onChange={(event) => props.onSaveValueFromInput(event, 6)} value={props.value6}></InputStyle>
-                        </InputWrapperStyle>
+                        <>
+                            <InputWrapperStyle width='100%'>
+                                <LabelStyle htmlFor='6'>Получатель</LabelStyle>
+                                <InputStyle inputRef={props.refInput6} id='6' placeholder='ФИО' onChange={(event) => props.onSaveValueFromInput(event, 6)} value={props.value6}></InputStyle>
+                            </InputWrapperStyle>
+                            <Div height='50px' margin='0 0 20px'>
+                                <Div onClick={props.toggleShowSourceList} height='50px' border='2px solid #E3E3E3' borderRadius='8px' padding='18px 30px 18px 15px' cursor='pointer'>
+                                    <Paragraph lineHeight='100%'>
+                                        {
+                                            props.source 
+                                            ? 
+                                            props.source 
+                                            : 
+                                            'Откуда узнали про нас?'
+                                        }
+                                    </Paragraph>
+                                </Div>
+                                {
+                                    props.showSourceList 
+                                    ? 
+                                    <Div position='relative' zIndex='6'>
+                                        <Div position='absolute' top='0' left='0' backgroundColor='#ffffff' border='2px solid #E3E3E3' borderRadius='8px' boxShadow='0px 5px 20px rgba(53, 50, 56, 0.14)' overflow='hidden'>
+                                            {props.sourcesList}
+                                        </Div>
+                                    </Div>
+                                    : 
+                                    null
+                                }
+                            </Div>
+                        </>
                         : 
                         null
                     }
