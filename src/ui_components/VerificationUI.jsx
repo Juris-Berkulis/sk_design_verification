@@ -111,7 +111,7 @@ export const VerificationUI = (props) => {
                                     props.city
                                 )
                                 ? 
-                                <Paragraph style={{position: 'absolute', top: '-5px', left: '10px'}} color={props.showCitiesList ? '#0086A8' : '#353238'} padding='0 5px' fontSize='12px' backgroundColor='#ffffff'>Выберите город *</Paragraph>
+                                <Paragraph style={{position: 'absolute', top: '-5px', left: '10px'}} color={props.showCitiesList ? '#0086A8' : '#828282'} padding='0 5px' fontSize='12px' lineHeight='100%' backgroundColor='#ffffff'>Выберите город *</Paragraph>
                                 : 
                                 null
                             }
@@ -177,7 +177,7 @@ export const VerificationUI = (props) => {
                                             props.source
                                         )
                                         ? 
-                                        <Paragraph style={{position: 'absolute', top: '-5px', left: '10px'}} color={props.showSourceList ? '#0086A8' : '#353238'} padding='0 5px' fontSize='12px' backgroundColor='#ffffff'>Откуда узнали про нас?</Paragraph>
+                                        <Paragraph style={{position: 'absolute', top: '-5px', left: '10px'}} color={props.showSourceList ? '#0086A8' : '#828282'} padding='0 5px' fontSize='12px' lineHeight='100%' backgroundColor='#ffffff'>Откуда узнали про нас?</Paragraph>
                                         : 
                                         null
                                     }
