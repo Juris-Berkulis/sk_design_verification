@@ -14,7 +14,6 @@ export const LabelStyle = styledComponents.label`
     font-size: 12px;
     line-height: 100%;
     letter-spacing: 0.25px;
-    color: #828282;
     background-color: #ffffff;
 `
 

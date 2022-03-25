@@ -103,8 +103,19 @@ export const VerificationUI = (props) => {
                         <InputStyle inputRef={props.refInput4} onFocus={props.closeAllDropdowns} id='4' placeholder='instagram.com/skde…' onChange={(event) => props.onSaveValueFromInput(event, 4)} value={props.value4}></InputStyle>
                     </InputWrapperStyle>
                     <Div height='50px' margin='0 0 20px' zIndex='7'>
-                        <Div onClick={props.toggleShowCitiesList} height='50px' border='2px solid #E3E3E3' borderRadius='8px' padding='18px 30px 18px 15px' cursor='pointer'>
-                            <Paragraph lineHeight='100%'>
+                        <Div onClick={props.toggleShowCitiesList} position='relative' height='50px' border={props.showCitiesList ? '2px solid #0086A8' : '2px solid #E3E3E3'} borderRadius='8px' padding='18px 30px 18px 15px' cursor='pointer'>
+                            {
+                                (
+                                    props.showCitiesList 
+                                    || 
+                                    props.city
+                                )
+                                ? 
+                                <Paragraph style={{position: 'absolute', top: '-5px', left: '10px'}} color={props.showCitiesList ? '#0086A8' : '#353238'} padding='0 5px' fontSize='12px' backgroundColor='#ffffff'>Выберите город *</Paragraph>
+                                : 
+                                null
+                            }
+                            <Paragraph lineHeight='100%' color={props.showCitiesList ? '#0086A8' : '#353238'}>
                                 {
                                     props.city 
                                     ? 
@@ -158,8 +169,19 @@ export const VerificationUI = (props) => {
                                 <InputStyle inputRef={props.refInput6} onFocus={props.closeAllDropdowns} id='6' placeholder='ФИО' onChange={(event) => props.onSaveValueFromInput(event, 6)} value={props.value6}></InputStyle>
                             </InputWrapperStyle>
                             <Div height='50px' margin='0 0 20px' zIndex='7'>
-                                <Div onClick={props.toggleShowSourceList} height='50px' border='2px solid #E3E3E3' borderRadius='8px' padding='18px 30px 18px 15px' cursor='pointer'>
-                                    <Paragraph lineHeight='100%'>
+                                <Div onClick={props.toggleShowSourceList} position='relative' height='50px' border={props.showCitiesList ? '2px solid #0086A8' : '2px solid #E3E3E3'} borderRadius='8px' padding='18px 30px 18px 15px' cursor='pointer'>
+                                    {
+                                        (
+                                            props.showSourceList 
+                                            || 
+                                            props.source
+                                        )
+                                        ? 
+                                        <Paragraph style={{position: 'absolute', top: '-5px', left: '10px'}} color={props.showSourceList ? '#0086A8' : '#353238'} padding='0 5px' fontSize='12px' backgroundColor='#ffffff'>Откуда узнали про нас?</Paragraph>
+                                        : 
+                                        null
+                                    }
+                                    <Paragraph lineHeight='100%' color={props.showSourceList ? '#0086A8' : '#353238'}>
                                         {
                                             props.source 
                                             ? 
