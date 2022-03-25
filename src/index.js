@@ -5,13 +5,32 @@ import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { App } from './App';
 import { store } from './store/Store';
-import './styles/index.css';
+import { createGlobalStyle, ThemeProvider } from 'styled-components';
+
+export const theme = {
+  media: {
+    width: {
+      stair1: '(max-width: 1240px)',
+    },
+  },
+}
+
+const GlobalStyles = createGlobalStyle`
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+`
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <Provider store={store}>
-        <App />
+        <ThemeProvider theme={theme}>
+          <GlobalStyles />
+          <App />
+        </ThemeProvider>
       </Provider>
     </BrowserRouter>
   </React.StrictMode>,
