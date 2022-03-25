@@ -10,6 +10,7 @@ export const ParagraphStyle = styledComponents.p`
     color: ${props => props.colorHover ? 'inherit' : '#353238'};
     margin: ${props => props.margin || '0'};
     cursor: ${props => props.cursor};
+    z-index: ${props => props.zIndex};
 `
 
 export const Paragraph = (props) => {

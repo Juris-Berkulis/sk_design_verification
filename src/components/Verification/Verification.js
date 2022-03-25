@@ -43,7 +43,7 @@ export const Verification = () => {
     };
 
     const citiesList = cities.map((item, index) => (
-        <Div onClick={toggleShowCitiesList} cursor='pointer' key={item.id}>
+        <Div onClick={() => setShowCitiesList(false)} cursor='pointer' key={item.id}>
             <Div onClick={getCity} height='30px' padding='5px 15px' color='#353238' backgroundColorHover='#0086A8' colorHover='#ffffff' value={item.name}>
                 <Paragraph lineHeight='20px' colorHover={true}>{item.name}</Paragraph>
             </Div>
@@ -62,7 +62,7 @@ export const Verification = () => {
     };
 
     const sourcesList = sources.map((item, index) => (
-        <Div onClick={toggleShowSourceList} cursor='pointer' key={item}>
+        <Div onClick={() => setShowSourceList(false)} cursor='pointer' key={item}>
             <Div onClick={getSource} height='30px' padding='5px 15px' color='#353238' backgroundColorHover='#0086A8' colorHover='#ffffff' value={item}>
                 <Paragraph lineHeight='20px' colorHover={true}>{item}</Paragraph>
             </Div>
@@ -176,6 +176,7 @@ export const Verification = () => {
 
         if (isSuccess) {
             setIsLoading(true);
+            closeAllDropdowns();
 
             const timerId = setTimeout(() => {
                 const newRequest = {
@@ -190,7 +191,9 @@ export const Verification = () => {
                 }
     
                 console.log(JSON.stringify(newRequest));
-    
+                
+                setCity(false);
+                setSource(false);
                 resetValue();
                 setIsLoading(false);
                 clearTimeout(timerId);
@@ -202,7 +205,12 @@ export const Verification = () => {
         setShowAdditionalList(!showAdditionalList);
     };
 
+    const closeAllDropdowns = () => {
+        setShowCitiesList(false);
+        setShowSourceList(false);
+    };
+
     return (
-        <VerificationUI onSubmitForm={onSubmitForm} onSaveValueFromInput={onSaveValueFromInput} value1={value1} value2={value2} value3={value3} value4={value4} value5={value5} value6={value6} refInput1={refInput1} refInput2={refInput2} refInput3={refInput3} refInput4={refInput4} refInput5={refInput5} refInput6={refInput6} isLoading={isLoading} isSuccess={isSuccess} toggleAdditionalList={toggleAdditionalList} showAdditionalList={showAdditionalList} citiesList={citiesList} toggleShowCitiesList={toggleShowCitiesList} showCitiesList={showCitiesList} city={city} sourcesList={sourcesList} toggleShowSourceList={toggleShowSourceList} showSourceList={showSourceList} source={source}></VerificationUI>
+        <VerificationUI onSubmitForm={onSubmitForm} onSaveValueFromInput={onSaveValueFromInput} value1={value1} value2={value2} value3={value3} value4={value4} value5={value5} value6={value6} refInput1={refInput1} refInput2={refInput2} refInput3={refInput3} refInput4={refInput4} refInput5={refInput5} refInput6={refInput6} isLoading={isLoading} isSuccess={isSuccess} toggleAdditionalList={toggleAdditionalList} showAdditionalList={showAdditionalList} citiesList={citiesList} toggleShowCitiesList={toggleShowCitiesList} showCitiesList={showCitiesList} city={city} sourcesList={sourcesList} toggleShowSourceList={toggleShowSourceList} showSourceList={showSourceList} source={source} closeAllDropdowns={closeAllDropdowns}></VerificationUI>
     )
 };

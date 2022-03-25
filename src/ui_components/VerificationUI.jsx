@@ -21,6 +21,17 @@ import { ImgSVG } from '../styles_components/ImgSVGStyle';
 export const VerificationUI = (props) => {
     return (
         <Flex justifyContent='center' alignItems='center' minHeight='100vh' width='100vw'>
+            {
+                (
+                    props.showCitiesList 
+                    || 
+                    props.showSourceList 
+                ) 
+                ? 
+                <Div onClick={props.closeAllDropdowns} position='absolute' top='0' left='0' height='100vh' width='100vw' backgroundColor='transparent' zIndex='6'></Div>
+                : 
+                null
+            }
             <PageFlex justifyContent='space-between' alignItems='center' maxWidth='1600px'>
                 <Flex flexDirection='column' maxWidth='950px' margin='2vh 2vw' pageColumn>
                     <Flex margin='0 0 40px'>
@@ -74,24 +85,24 @@ export const VerificationUI = (props) => {
                     <Paragraph margin='0 0 22px'>Партнерство мы видим как доверительные отношения, основанные на честности реализации бизнес идей в сфере создания и продаж современной, качественной, удобной, функциональной и эксклюзивной мебели.</Paragraph>
                     <Paragraph>Ознакомиться с проектами можете в нашем портфолио. Если Вы оформляете интерьеры жилых или коммерческих помещений — мы с радостью поможем Вам: составим уникальные условия сотрудничества, предоставим 3D модели (уточняйте у менеджеров) и разработаем коммерческое предложение к Вашему проекту или изображениям.</Paragraph>
                 </Flex>
-                <Form  onSubmit={props.onSubmitForm} margin='2vh 2vw' padding='40px 30px'>
+                <Form onSubmit={props.onSubmitForm} margin='2vh 2vw' padding='40px 30px'>
                     <InputWrapperStyle width='47%'>
                         <LabelStyle htmlFor='1'>Ваше имя *</LabelStyle>
-                        <InputStyle inputRef={props.refInput1} id='1' placeholder='Иван' onChange={(event) => props.onSaveValueFromInput(event, 1)} value={props.value1}></InputStyle>
+                        <InputStyle inputRef={props.refInput1} onFocus={props.closeAllDropdowns} id='1' placeholder='Иван' onChange={(event) => props.onSaveValueFromInput(event, 1)} value={props.value1}></InputStyle>
                     </InputWrapperStyle>
                     <InputWrapperStyle width='47%'>
                         <LabelStyle htmlFor='2'>Номер телефона *</LabelStyle>
-                        <InputStyle inputRef={props.refInput2} id='2' placeholder='+7 (000) 000-00-00' onChange={(event) => props.onSaveValueFromInput(event, 2)} value={props.value2}></InputStyle>
+                        <InputStyle inputRef={props.refInput2} onFocus={props.closeAllDropdowns} id='2' placeholder='+7 (000) 000-00-00' onChange={(event) => props.onSaveValueFromInput(event, 2)} value={props.value2}></InputStyle>
                     </InputWrapperStyle>
                     <InputWrapperStyle width='47%'>
                         <LabelStyle htmlFor='3'>E-mail *</LabelStyle>
-                        <InputStyle inputRef={props.refInput3} id='3' placeholder='example@skdesign.ru' onChange={(event) => props.onSaveValueFromInput(event, 3)} value={props.value3}></InputStyle>
+                        <InputStyle inputRef={props.refInput3} onFocus={props.closeAllDropdowns} id='3' placeholder='example@skdesign.ru' onChange={(event) => props.onSaveValueFromInput(event, 3)} value={props.value3}></InputStyle>
                     </InputWrapperStyle>
                     <InputWrapperStyle width='47%'>
                         <LabelStyle htmlFor='4'>Ссылка на профиль *</LabelStyle>
-                        <InputStyle inputRef={props.refInput4} id='4' placeholder='instagram.com/skde…' onChange={(event) => props.onSaveValueFromInput(event, 4)} value={props.value4}></InputStyle>
+                        <InputStyle inputRef={props.refInput4} onFocus={props.closeAllDropdowns} id='4' placeholder='instagram.com/skde…' onChange={(event) => props.onSaveValueFromInput(event, 4)} value={props.value4}></InputStyle>
                     </InputWrapperStyle>
-                    <Div height='50px' margin='0 0 20px'>
+                    <Div height='50px' margin='0 0 20px' zIndex='7'>
                         <Div onClick={props.toggleShowCitiesList} height='50px' border='2px solid #E3E3E3' borderRadius='8px' padding='18px 30px 18px 15px' cursor='pointer'>
                             <Paragraph lineHeight='100%'>
                                 {
@@ -106,7 +117,7 @@ export const VerificationUI = (props) => {
                         {
                             props.showCitiesList 
                             ? 
-                            <Div position='relative' zIndex='6'>
+                            <Div position='relative' zIndex='9'>
                                 <Div position='absolute' top='0' left='0' backgroundColor='#ffffff' border='2px solid #E3E3E3' borderRadius='8px' boxShadow='0px 5px 20px rgba(53, 50, 56, 0.14)' overflow='hidden'>
                                     {props.citiesList}
                                 </Div>
@@ -117,9 +128,9 @@ export const VerificationUI = (props) => {
                     </Div>
                     <InputWrapperStyle>
                         <LabelStyle htmlFor='5'>Название организации/студии</LabelStyle>
-                        <InputStyle inputRef={props.refInput5} id='5' placeholder='SK Design' onChange={(event) => props.onSaveValueFromInput(event, 5)} value={props.value5}></InputStyle>
+                        <InputStyle inputRef={props.refInput5} onFocus={props.closeAllDropdowns} id='5' placeholder='SK Design' onChange={(event) => props.onSaveValueFromInput(event, 5)} value={props.value5}></InputStyle>
                     </InputWrapperStyle>
-                    <Paragraph margin='0 0 20px' cursor='pointer' onClick={props.toggleAdditionalList}>
+                    <Paragraph margin='0 0 20px' cursor='pointer' zIndex='6' onClick={props.toggleAdditionalList}>
                         {
                             props.showAdditionalList 
                             ? 
@@ -144,9 +155,9 @@ export const VerificationUI = (props) => {
                         <>
                             <InputWrapperStyle width='100%'>
                                 <LabelStyle htmlFor='6'>Получатель</LabelStyle>
-                                <InputStyle inputRef={props.refInput6} id='6' placeholder='ФИО' onChange={(event) => props.onSaveValueFromInput(event, 6)} value={props.value6}></InputStyle>
+                                <InputStyle inputRef={props.refInput6} onFocus={props.closeAllDropdowns} id='6' placeholder='ФИО' onChange={(event) => props.onSaveValueFromInput(event, 6)} value={props.value6}></InputStyle>
                             </InputWrapperStyle>
-                            <Div height='50px' margin='0 0 20px'>
+                            <Div height='50px' margin='0 0 20px' zIndex='7'>
                                 <Div onClick={props.toggleShowSourceList} height='50px' border='2px solid #E3E3E3' borderRadius='8px' padding='18px 30px 18px 15px' cursor='pointer'>
                                     <Paragraph lineHeight='100%'>
                                         {
@@ -161,7 +172,7 @@ export const VerificationUI = (props) => {
                                 {
                                     props.showSourceList 
                                     ? 
-                                    <Div position='relative' zIndex='6'>
+                                    <Div position='relative' zIndex='9'>
                                         <Div position='absolute' top='0' left='0' backgroundColor='#ffffff' border='2px solid #E3E3E3' borderRadius='8px' boxShadow='0px 5px 20px rgba(53, 50, 56, 0.14)' overflow='hidden'>
                                             {props.sourcesList}
                                         </Div>
@@ -177,16 +188,16 @@ export const VerificationUI = (props) => {
                     {
                         props.isLoading 
                         ? 
-                        <ButtonLoading disabled>
+                        <ButtonLoading zIndex='6' disabled>
                             <PreloaderImg src={preloader} alt='Загрузка'></PreloaderImg>
                         </ButtonLoading>
                         : 
                         (
                             props.isSuccess 
                             ? 
-                            <ButtonSuccess type='submit'>Отправить заявку</ButtonSuccess>
+                            <ButtonSuccess type='submit' zIndex='6'>Отправить заявку</ButtonSuccess>
                             : 
-                            <Button disabled>Отправить заявку</Button>
+                            <Button zIndex='6' disabled>Отправить заявку</Button>
                         )
                     }
                 </Form>

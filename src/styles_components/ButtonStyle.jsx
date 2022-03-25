@@ -14,6 +14,7 @@ export const ButtonStyle = styledComponents.button`
     text-align: center;
     color: #828282;
     disabled: disabled;
+    z-index: ${props => props.zIndex};
 `
 
 export const Button = ({children, ...props}) => {

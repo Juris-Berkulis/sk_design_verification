@@ -14,6 +14,7 @@ export const ButtonSuccessStyle = styledComponents.button`
     text-align: center;
     color: #FFFFFF;
     cursor: pointer;
+    z-index: ${props => props.zIndex};
 `
 
 export const ButtonSuccess = ({children, ...props}) => {

@@ -7,6 +7,7 @@ export const InputWrapperStyle = styledComponents.div`
     height: ${props => props.height || '50px'};
     margin: ${props => props.margin || '0 0 20px'};
     padding: ${props => props.padding || '0'};
+    z-index: ${props => props.zIndex || '6'};
 `
 
 export const InputWrapper = (props) => {
