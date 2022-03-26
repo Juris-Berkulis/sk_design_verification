@@ -28,7 +28,7 @@ export const VerificationUI = (props) => {
                     props.showSourceList 
                 ) 
                 ? 
-                <Div onClick={props.closeAllDropdowns} position='absolute' top='0' left='0' height='100vh' width='100vw' backgroundColor='transparent' zIndex='6'></Div>
+                <Div onClick={props.closeAllDropdowns} position='fixed' top='0' left='0' height='100vh' width='100vw' backgroundColor='transparent' zIndex='6'></Div>
                 : 
                 null
             }
@@ -169,7 +169,7 @@ export const VerificationUI = (props) => {
                                 <InputStyle inputRef={props.refInput6} onFocus={props.closeAllDropdowns} id='6' placeholder='ФИО' onChange={(event) => props.onSaveValueFromInput(event, 6)} value={props.value6}></InputStyle>
                             </InputWrapperStyle>
                             <Div height='50px' margin='0 0 20px' zIndex='7'>
-                                <Div onClick={props.toggleShowSourceList} position='relative' height='50px' border={props.showCitiesList ? '2px solid #0086A8' : '2px solid #E3E3E3'} borderRadius='8px' padding='18px 30px 18px 15px' cursor='pointer'>
+                                <Div onClick={props.toggleShowSourceList} position='relative' height='50px' border={props.showSourceList ? '2px solid #0086A8' : '2px solid #E3E3E3'} borderRadius='8px' padding='18px 30px 18px 15px' cursor='pointer'>
                                     {
                                         (
                                             props.showSourceList 
