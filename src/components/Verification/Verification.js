@@ -21,6 +21,12 @@ export const Verification = () => {
     const [city, setCity] = useState(false);
     const [source, setSource] = useState(false);
 
+    const [errorInput1, setErrorInput1] = useState(false);
+    const [errorInput2, setErrorInput2] = useState(false);
+    const [errorInput3, setErrorInput3] = useState(false);
+    const [errorInput4, setErrorInput4] = useState(false);
+    const [errorCity, setErrorCity] = useState(false);
+
     const refInput1 = useRef(null);
     const refInput2 = useRef(null);
     const refInput3 = useRef(null);
@@ -87,65 +93,107 @@ export const Verification = () => {
         setValue6('');
     };
 
-    const validName = (name) => {
+    const validName = (name, number=1) => {
         const regExp = /^[A-zА-яЁё]{2,}$/;
 
         if (regExp.test(name)) {
+            setErrorInput1(false);
             return true
         } else {
+            if (number === 1) {
+                if (name === '') {
+                    setErrorInput1('Обязательное поле');
+                } else {
+                    setErrorInput1('Минимум 2 символа');
+                }
+            }
             return false
         }
     };
 
-    const validPhoneNumber = (phoneNumber) => {
+    const validPhoneNumber = (phoneNumber, number=2) => {
         const regExp = /^\+[0-9]{11}$/;
 
         if (regExp.test(phoneNumber)) {
+            setErrorInput2(false);
             return true
         } else {
+            if (number === 2) {
+                if (phoneNumber === '') {
+                    setErrorInput2('Обязательное поле');
+                } else {
+                    setErrorInput2('Неверный формат');
+                }
+            }
             return false
         }
     };
 
-    const validEmail = (email) => {
+    const validEmail = (email, number=3) => {
         const regExp = /^.+@.+\..+$/;
 
         if (regExp.test(email)) {
+            setErrorInput3(false);
             return true
         } else {
+            if (number === 3) {
+                if (email === '') {
+                    setErrorInput3('Обязательное поле');
+                } else {
+                    setErrorInput3('Неверный формат');
+                }
+            }
             return false
         }
     };
 
-    const validProfile = (profile) => {
+    const validProfile = (profile, number=4) => {
         const regExp = /^\S{3,}$/;
 
         if (regExp.test(profile)) {
+            setErrorInput4(false);
             return true
         } else {
+            if (number === 4) {
+                if (profile === '') {
+                    setErrorInput4('Обязательное поле');
+                } else {
+                    setErrorInput4('Минимум 3 символа');
+                }
+            }
+            return false
+        }
+    };
+
+    const validCity = (city, number=6) => {
+        if (city) {
+            setErrorCity(false);
+            return true
+        } else {
+            if (number === 6) {
+                setErrorCity('Обязательное поле');
+            }
             return false
         }
     };
 
     const validAll = (eventTV, number) => {
+        const isValidName = validName(1 === number ? eventTV : value1, number);
+        const isValidPhoneNumber = validPhoneNumber(2 === number ? eventTV : value2, number);
+        const isValidEmail = validEmail(3 === number ? eventTV : value3, number);
+        const isValidProfile = validProfile(4 === number ? eventTV : value4, number);
+        const isValidCity = validCity(6 === number ? eventTV : city, number);
+
         if (
-            validName(1 === number ? eventTV : value1) 
+            isValidName 
             && 
-            validPhoneNumber(2 === number ? eventTV : value2) 
+            isValidPhoneNumber 
             && 
-            validEmail(3 === number ? eventTV : value3) 
+            isValidEmail 
             && 
-            validProfile(4 === number ? eventTV : value4)
+            isValidProfile 
             && 
-            (
-                city 
-                || 
-                (
-                    number === 6 
-                    && 
-                    eventTV
-                )
-            )
+            isValidCity
         ) {
             setIsSuccess(true);
         } else {
@@ -211,6 +259,6 @@ export const Verification = () => {
     };
 
     return (
-        <VerificationUI onSubmitForm={onSubmitForm} onSaveValueFromInput={onSaveValueFromInput} value1={value1} value2={value2} value3={value3} value4={value4} value5={value5} value6={value6} refInput1={refInput1} refInput2={refInput2} refInput3={refInput3} refInput4={refInput4} refInput5={refInput5} refInput6={refInput6} isLoading={isLoading} isSuccess={isSuccess} toggleAdditionalList={toggleAdditionalList} showAdditionalList={showAdditionalList} citiesList={citiesList} toggleShowCitiesList={toggleShowCitiesList} showCitiesList={showCitiesList} city={city} sourcesList={sourcesList} toggleShowSourceList={toggleShowSourceList} showSourceList={showSourceList} source={source} closeAllDropdowns={closeAllDropdowns}></VerificationUI>
+        <VerificationUI onSubmitForm={onSubmitForm} onSaveValueFromInput={onSaveValueFromInput} value1={value1} value2={value2} value3={value3} value4={value4} value5={value5} value6={value6} refInput1={refInput1} refInput2={refInput2} refInput3={refInput3} refInput4={refInput4} refInput5={refInput5} refInput6={refInput6} isLoading={isLoading} isSuccess={isSuccess} toggleAdditionalList={toggleAdditionalList} showAdditionalList={showAdditionalList} citiesList={citiesList} toggleShowCitiesList={toggleShowCitiesList} showCitiesList={showCitiesList} city={city} sourcesList={sourcesList} toggleShowSourceList={toggleShowSourceList} showSourceList={showSourceList} source={source} closeAllDropdowns={closeAllDropdowns} errorInput1={errorInput1} errorInput2={errorInput2} errorInput3={errorInput3} errorInput4={errorInput4} errorCity={errorCity} validAll={validAll} validCity={validCity}></VerificationUI>
     )
 };

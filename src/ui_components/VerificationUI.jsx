@@ -17,6 +17,7 @@ import { Title } from '../styles_components/TitleStyle';
 import preloader from '../img/preloader.png';
 import { Span } from '../styles_components/SpanStyle';
 import { ImgSVG } from '../styles_components/ImgSVGStyle';
+import { ParagraphError } from '../styles_components/ParagraphErrorStyle';
 
 export const VerificationUI = (props) => {
     return (
@@ -86,24 +87,52 @@ export const VerificationUI = (props) => {
                     <Paragraph>Ознакомиться с проектами можете в нашем портфолио. Если Вы оформляете интерьеры жилых или коммерческих помещений — мы с радостью поможем Вам: составим уникальные условия сотрудничества, предоставим 3D модели (уточняйте у менеджеров) и разработаем коммерческое предложение к Вашему проекту или изображениям.</Paragraph>
                 </Flex>
                 <Form onSubmit={props.onSubmitForm} margin='2vh 2vw' padding='40px 30px'>
-                    <InputWrapperStyle width='47%'>
+                    <InputWrapperStyle width='47%' isError={props.errorInput1 ? true : false}>
                         <LabelStyle htmlFor='1'>Ваше имя *</LabelStyle>
-                        <InputStyle inputRef={props.refInput1} onFocus={props.closeAllDropdowns} id='1' placeholder='Иван' onChange={(event) => props.onSaveValueFromInput(event, 1)} value={props.value1}></InputStyle>
+                        <InputStyle inputRef={props.refInput1} onFocus={props.closeAllDropdowns} id='1' placeholder='Иван' onChange={(event) => props.onSaveValueFromInput(event, 1)} value={props.value1} isError={props.errorInput1 ? true : false}></InputStyle>
+                        {
+                            props.errorInput1 
+                            ? 
+                            <ParagraphError position='absolute' top='58px' left='15px' color='#EB5E55' fontSize='12px' lineHeight='100%'>{props.errorInput1}</ParagraphError>
+                            : 
+                            null
+                        }
                     </InputWrapperStyle>
-                    <InputWrapperStyle width='47%'>
+                    <InputWrapperStyle width='47%' isError={props.errorInput2 ? true : false}>
                         <LabelStyle htmlFor='2'>Номер телефона *</LabelStyle>
-                        <InputStyle inputRef={props.refInput2} onFocus={props.closeAllDropdowns} id='2' placeholder='+7 (000) 000-00-00' onChange={(event) => props.onSaveValueFromInput(event, 2)} value={props.value2}></InputStyle>
+                        <InputStyle inputRef={props.refInput2} onFocus={props.closeAllDropdowns} id='2' placeholder='+7 (000) 000-00-00' onChange={(event) => props.onSaveValueFromInput(event, 2)} value={props.value2} isError={props.errorInput2 ? true : false}></InputStyle>
+                        {
+                            props.errorInput2 
+                            ? 
+                            <ParagraphError position='absolute' top='58px' left='15px' color='#EB5E55' fontSize='12px' lineHeight='100%'>{props.errorInput2}</ParagraphError>
+                            : 
+                            null
+                        }
                     </InputWrapperStyle>
-                    <InputWrapperStyle width='47%'>
+                    <InputWrapperStyle width='47%' isError={props.errorInput3 ? true : false}>
                         <LabelStyle htmlFor='3'>E-mail *</LabelStyle>
-                        <InputStyle inputRef={props.refInput3} onFocus={props.closeAllDropdowns} id='3' placeholder='example@skdesign.ru' onChange={(event) => props.onSaveValueFromInput(event, 3)} value={props.value3}></InputStyle>
+                        <InputStyle inputRef={props.refInput3} onFocus={props.closeAllDropdowns} id='3' placeholder='example@skdesign.ru' onChange={(event) => props.onSaveValueFromInput(event, 3)} value={props.value3} isError={props.errorInput3 ? true : false}></InputStyle>
+                        {
+                            props.errorInput3 
+                            ? 
+                            <ParagraphError position='absolute' top='58px' left='15px' color='#EB5E55' fontSize='12px' lineHeight='100%'>{props.errorInput3}</ParagraphError>
+                            : 
+                            null
+                        }
                     </InputWrapperStyle>
-                    <InputWrapperStyle width='47%'>
+                    <InputWrapperStyle width='47%' isError={props.errorInput4 ? true : false}>
                         <LabelStyle htmlFor='4'>Ссылка на профиль *</LabelStyle>
-                        <InputStyle inputRef={props.refInput4} onFocus={props.closeAllDropdowns} id='4' placeholder='instagram.com/skde…' onChange={(event) => props.onSaveValueFromInput(event, 4)} value={props.value4}></InputStyle>
+                        <InputStyle inputRef={props.refInput4} onFocus={props.closeAllDropdowns} id='4' placeholder='instagram.com/skde…' onChange={(event) => props.onSaveValueFromInput(event, 4)} value={props.value4} isError={props.errorInput4 ? true : false}></InputStyle>
+                        {
+                            props.errorInput4 
+                            ? 
+                            <ParagraphError position='absolute' top='58px' left='15px' color='#EB5E55' fontSize='12px' lineHeight='100%'>{props.errorInput4}</ParagraphError>
+                            : 
+                            null
+                        }
                     </InputWrapperStyle>
-                    <Div height='50px' margin='0 0 20px' zIndex='7'>
-                        <Div onClick={props.toggleShowCitiesList} position='relative' height='50px' border={props.showCitiesList ? '2px solid #0086A8' : '2px solid #E3E3E3'} borderRadius='8px' padding='18px 30px 18px 15px' cursor='pointer'>
+                    <Div position='relative' height='50px' margin='0 0 20px' zIndex='7'>
+                        <Div onClick={() => {props.toggleShowCitiesList(); props.validCity()}} position='relative' height='50px' border={props.showCitiesList ? '2px solid #0086A8' : (props.errorCity ? '2px solid #EB5E55' : '2px solid #E3E3E3')} borderRadius='8px' padding='18px 30px 18px 15px' cursor='pointer'>
                             {
                                 (
                                     props.showCitiesList 
@@ -115,7 +144,7 @@ export const VerificationUI = (props) => {
                                 : 
                                 null
                             }
-                            <Paragraph lineHeight='100%' color={props.showCitiesList ? '#0086A8' : '#353238'}>
+                            <Paragraph lineHeight='100%' color={props.showCitiesList ? '#0086A8' : (props.errorCity ? '#EB5E55' : '#353238')}>
                                 {
                                     props.city 
                                     ? 
@@ -133,6 +162,13 @@ export const VerificationUI = (props) => {
                                     {props.citiesList}
                                 </Div>
                             </Div>
+                            : 
+                            null
+                        }
+                        {
+                            props.errorCity 
+                            ? 
+                            <ParagraphError position='absolute' top='58px' left='15px' color='#EB5E55' fontSize='12px' lineHeight='100%'>{props.errorCity}</ParagraphError>
                             : 
                             null
                         }
@@ -219,7 +255,7 @@ export const VerificationUI = (props) => {
                             ? 
                             <ButtonSuccess type='submit' zIndex='6'>Отправить заявку</ButtonSuccess>
                             : 
-                            <Button zIndex='6' disabled>Отправить заявку</Button>
+                            <Button onClick={props.validAll} zIndex='6'>Отправить заявку</Button>
                         )
                     }
                 </Form>

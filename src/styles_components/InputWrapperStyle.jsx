@@ -8,9 +8,9 @@ export const InputWrapperStyle = styledComponents.div`
     margin: ${props => props.margin || '0 0 20px'};
     padding: ${props => props.padding || '0'};
     z-index: ${props => props.zIndex || '6'};
-    color: #828282;
+    color: ${props => props.isError ? '#EB5E55' : '#828282'};
     &:focus-within {
-        color: #0086A8;
+        color: ${props => props.isError ? '#EB5E55' : '#0086A8'};
     }
 `
 

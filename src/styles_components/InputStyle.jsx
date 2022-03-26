@@ -11,7 +11,7 @@ export const InputStyle = styledComponents.input`
     margin: ${props => props.margin || '0'};
     padding: ${props => props.padding || '18px 15px'};
     background: #FFFFFF;
-    border: 2px solid #E3E3E3;
+    border: ${props => props.isError ? '2px solid #EB5E55' : '2px solid #E3E3E3'};
     border-radius: 8px;
     type: text;
     &:placeholder: ${props => props.placeholder || ''};
@@ -23,7 +23,7 @@ export const InputStyle = styledComponents.input`
     }
     &:focus {
         outline: none;
-        border: 2px solid #0086A8;
+        border: ${props => props.isError ? '2px solid #EB5E55' : '2px solid #0086A8'};
     }
 `
 
