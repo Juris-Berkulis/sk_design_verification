@@ -3,11 +3,13 @@ import thunk from 'redux-thunk';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { statusesInTheAppReducer } from './AppSwitches/Reducer';
+import { formErrorsReducer } from './FormErrors/Reducer';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const rootReducer = combineReducers({
     statusesInTheApp: statusesInTheAppReducer,
+    formErrorsStore: formErrorsReducer,
 });
 
 const persistConfig = {

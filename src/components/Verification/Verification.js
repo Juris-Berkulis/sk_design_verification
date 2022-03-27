@@ -7,6 +7,8 @@ import { Paragraph } from '../../styles_components/ParagraphStyle';
 import { useDispatch, useSelector } from 'react-redux';
 import { getStatusesInTheAppIsFormLoadingSelector, getStatusesInTheAppIsFormSuccessSelector, getStatusesInTheAppShowAdditionalListSelector, getStatusesInTheAppShowCitiesListCaseSelector, getStatusesInTheAppShowSourceListCaseSelector } from '../../store/AppSwitches/Selectors';
 import { isFormLoadingAction, isFormSuccessAction, showAdditionalListAction, showCitiesListAction, showSourceListAction } from '../../store/AppSwitches/Action';
+import { getFormErrorsErrorCityCaseSelector, getFormErrorsErrorInput1CaseSelector, getFormErrorsErrorInput2CaseSelector, getFormErrorsErrorInput3CaseSelector, getFormErrorsErrorInput4CaseSelector } from '../../store/FormErrors/Selectors';
+import { errorCityAction, errorInput1Action, errorInput2Action, errorInput3Action, errorInput4Action } from '../../store/FormErrors/Action';
 
 export const Verification = () => {
     // const [isLoading, setIsLoading] = useState(false);
@@ -32,11 +34,17 @@ export const Verification = () => {
     const [city, setCity] = useState(false);
     const [source, setSource] = useState(false);
 
-    const [errorInput1, setErrorInput1] = useState(false);
-    const [errorInput2, setErrorInput2] = useState(false);
-    const [errorInput3, setErrorInput3] = useState(false);
-    const [errorInput4, setErrorInput4] = useState(false);
-    const [errorCity, setErrorCity] = useState(false);
+    // const [errorInput1, setErrorInput1] = useState(false);
+    // const [errorInput2, setErrorInput2] = useState(false);
+    // const [errorInput3, setErrorInput3] = useState(false);
+    // const [errorInput4, setErrorInput4] = useState(false);
+    // const [errorCity, setErrorCity] = useState(false);
+
+    const errorInput1 = useSelector(getFormErrorsErrorInput1CaseSelector);
+    const errorInput2 = useSelector(getFormErrorsErrorInput2CaseSelector);
+    const errorInput3 = useSelector(getFormErrorsErrorInput3CaseSelector);
+    const errorInput4 = useSelector(getFormErrorsErrorInput4CaseSelector);
+    const errorCity = useSelector(getFormErrorsErrorCityCaseSelector);
 
     const refInput1 = useRef(null);
     const refInput2 = useRef(null);
@@ -134,14 +142,27 @@ export const Verification = () => {
         const regExp = /^[A-zА-яЁё]{2,}$/;
 
         if (regExp.test(name)) {
-            setErrorInput1(false);
+            // setErrorInput1(false);
+            dispatch({
+                type: errorInput1Action.type,
+                payload: false,
+            });
+
             return true
         } else {
             if (number === 1) {
                 if (name === '') {
-                    setErrorInput1('Обязательное поле');
+                    // setErrorInput1('Обязательное поле');
+                    dispatch({
+                        type: errorInput1Action.type,
+                        payload: 'Обязательное поле',
+                    });
                 } else {
-                    setErrorInput1('Минимум 2 символа');
+                    // setErrorInput1('Минимум 2 символа');
+                    dispatch({
+                        type: errorInput1Action.type,
+                        payload: 'Минимум 2 символа',
+                    });
                 }
             }
             return false
@@ -152,14 +173,26 @@ export const Verification = () => {
         const regExp = /^\+[0-9]{11}$/;
 
         if (regExp.test(phoneNumber)) {
-            setErrorInput2(false);
+            // setErrorInput2(false);
+            dispatch({
+                type: errorInput2Action.type,
+                payload: false,
+            });
             return true
         } else {
             if (number === 2) {
                 if (phoneNumber === '') {
-                    setErrorInput2('Обязательное поле');
+                    // setErrorInput2('Обязательное поле');
+                    dispatch({
+                        type: errorInput2Action.type,
+                        payload: 'Обязательное поле',
+                    });
                 } else {
-                    setErrorInput2('Неверный формат');
+                    // setErrorInput2('Неверный формат');
+                    dispatch({
+                        type: errorInput2Action.type,
+                        payload: 'Неверный формат',
+                    });
                 }
             }
             return false
@@ -170,14 +203,26 @@ export const Verification = () => {
         const regExp = /^.+@.+\..+$/;
 
         if (regExp.test(email)) {
-            setErrorInput3(false);
+            // setErrorInput3(false);
+            dispatch({
+                type: errorInput3Action.type,
+                payload: false,
+            });
             return true
         } else {
             if (number === 3) {
                 if (email === '') {
-                    setErrorInput3('Обязательное поле');
+                    // setErrorInput3('Обязательное поле');
+                    dispatch({
+                        type: errorInput3Action.type,
+                        payload: 'Обязательное поле',
+                    });
                 } else {
-                    setErrorInput3('Неверный формат');
+                    // setErrorInput3('Неверный формат');
+                    dispatch({
+                        type: errorInput3Action.type,
+                        payload: 'Неверный формат',
+                    });
                 }
             }
             return false
@@ -188,14 +233,26 @@ export const Verification = () => {
         const regExp = /^\S{3,}$/;
 
         if (regExp.test(profile)) {
-            setErrorInput4(false);
+            // setErrorInput4(false);
+            dispatch({
+                type: errorInput4Action.type,
+                payload: false,
+            });
             return true
         } else {
             if (number === 4) {
                 if (profile === '') {
-                    setErrorInput4('Обязательное поле');
+                    // setErrorInput4('Обязательное поле');
+                    dispatch({
+                        type: errorInput4Action.type,
+                        payload: 'Обязательное поле',
+                    });
                 } else {
-                    setErrorInput4('Минимум 3 символа');
+                    // setErrorInput4('Минимум 3 символа');
+                    dispatch({
+                        type: errorInput4Action.type,
+                        payload: 'Минимум 3 символа',
+                    });
                 }
             }
             return false
@@ -204,11 +261,19 @@ export const Verification = () => {
 
     const validCity = (newCity=city, number=6) => {
         if (newCity) {
-            setErrorCity(false);
+            // setErrorCity(false);
+            dispatch({
+                type: errorCityAction.type,
+                payload: false,
+            });
             return true
         } else {
             if (number === 6) {
-                setErrorCity('Обязательное поле');
+                // setErrorCity('Обязательное поле');
+                dispatch({
+                    type: errorCityAction.type,
+                    payload: 'Обязательное поле',
+                });
             }
             return false
         }
