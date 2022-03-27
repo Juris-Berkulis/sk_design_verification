@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import { VerificationUI } from '../../ui_components/VerificationUI';
 import cities from '../../json/cities.json';
 import sources from '../../json/sources.json';
@@ -9,6 +9,8 @@ import { getStatusesInTheAppIsFormLoadingSelector, getStatusesInTheAppIsFormSucc
 import { isFormLoadingAction, isFormSuccessAction, showAdditionalListAction, showCitiesListAction, showSourceListAction } from '../../store/AppSwitches/Action';
 import { getFormErrorsErrorCityCaseSelector, getFormErrorsErrorInput1CaseSelector, getFormErrorsErrorInput2CaseSelector, getFormErrorsErrorInput3CaseSelector, getFormErrorsErrorInput4CaseSelector } from '../../store/FormErrors/Selectors';
 import { errorCityAction, errorInput1Action, errorInput2Action, errorInput3Action, errorInput4Action } from '../../store/FormErrors/Action';
+import { getFormInputsValuesCitySelector, getFormInputsValuesSourceSelector, getFormInputsValuesValue1Selector, getFormInputsValuesValue2Selector, getFormInputsValuesValue3Selector, getFormInputsValuesValue4Selector, getFormInputsValuesValue5Selector, getFormInputsValuesValue6Selector } from '../../store/FormInputsValues/Selectors';
+import { cityAction, sourceAction, value1Action, value2Action, value3Action, value4Action, value5Action, value6Action } from '../../store/FormInputsValues/Action';
 
 export const Verification = () => {
     // const [isLoading, setIsLoading] = useState(false);
@@ -25,14 +27,23 @@ export const Verification = () => {
     const showCitiesList = useSelector(getStatusesInTheAppShowCitiesListCaseSelector);
     const showSourceList = useSelector(getStatusesInTheAppShowSourceListCaseSelector);
 
-    const [value1, setValue1] = useState('');
-    const [value2, setValue2] = useState('');
-    const [value3, setValue3] = useState('');
-    const [value4, setValue4] = useState('');
-    const [value5, setValue5] = useState('');
-    const [value6, setValue6] = useState('');
-    const [city, setCity] = useState(false);
-    const [source, setSource] = useState(false);
+    // const [value1, setValue1] = useState('');
+    // const [value2, setValue2] = useState('');
+    // const [value3, setValue3] = useState('');
+    // const [value4, setValue4] = useState('');
+    // const [value5, setValue5] = useState('');
+    // const [value6, setValue6] = useState('');
+    // const [city, setCity] = useState(false);
+    // const [source, setSource] = useState(false);
+
+    const value1 = useSelector(getFormInputsValuesValue1Selector);
+    const value2 = useSelector(getFormInputsValuesValue2Selector);
+    const value3 = useSelector(getFormInputsValuesValue3Selector);
+    const value4 = useSelector(getFormInputsValuesValue4Selector);
+    const value5 = useSelector(getFormInputsValuesValue5Selector);
+    const value6 = useSelector(getFormInputsValuesValue6Selector);
+    const city = useSelector(getFormInputsValuesCitySelector);
+    const source = useSelector(getFormInputsValuesSourceSelector);
 
     // const [errorInput1, setErrorInput1] = useState(false);
     // const [errorInput2, setErrorInput2] = useState(false);
@@ -54,11 +65,19 @@ export const Verification = () => {
     const refInput6 = useRef(null);
 
     const getSource = (event) => {
-        setSource(event.target.outerText);
+        // setSource(event.target.outerText);
+        dispatch({
+            type: sourceAction.type,
+            payload: event.target.outerText,
+        });
     };
     
     const getCity = (event) => {
-        setCity(event.target.outerText);
+        // setCity(event.target.outerText);
+        dispatch({
+            type: cityAction.type,
+            payload: event.target.outerText,
+        });
 
         validAll(event.target.outerText, 6);
     };
@@ -130,12 +149,36 @@ export const Verification = () => {
             payload: false,
         });
 
-        setValue1('');
-        setValue2('');
-        setValue3('');
-        setValue4('');
-        setValue5('');
-        setValue6('');
+        // setValue1('');
+        dispatch({
+            type: value1Action.type,
+            payload: '',
+        });
+        // setValue2('');
+        dispatch({
+            type: value2Action.type,
+            payload: '',
+        });
+        // setValue3('');
+        dispatch({
+            type: value3Action.type,
+            payload: '',
+        });
+        // setValue4('');
+        dispatch({
+            type: value4Action.type,
+            payload: '',
+        });
+        // setValue5('');
+        dispatch({
+            type: value5Action.type,
+            payload: '',
+        });
+        // setValue6('');
+        dispatch({
+            type: value6Action.type,
+            payload: '',
+        });
     };
 
     const validName = (name, number=1) => {
@@ -313,17 +356,41 @@ export const Verification = () => {
 
     const onSaveValueFromInput = (event, number) => {
         if (number === 1) {
-            setValue1(event.target.value);
+            // setValue1(event.target.value);
+            dispatch({
+                type: value1Action.type,
+                payload: event.target.value,
+            });
         } else if (number === 2) {
-            setValue2(event.target.value);
+            // setValue2(event.target.value);
+            dispatch({
+                type: value2Action.type,
+                payload: event.target.value,
+            });
         } else if (number === 3) {
-            setValue3(event.target.value);
+            // setValue3(event.target.value);
+            dispatch({
+                type: value3Action.type,
+                payload: event.target.value,
+            });
         } else if (number === 4) {
-            setValue4(event.target.value);
+            // setValue4(event.target.value);
+            dispatch({
+                type: value4Action.type,
+                payload: event.target.value,
+            });
         } else if (number === 5) {
-            setValue5(event.target.value);
+            // setValue5(event.target.value);
+            dispatch({
+                type: value5Action.type,
+                payload: event.target.value,
+            });
         } else if (number === 6) {
-            setValue6(event.target.value);
+            // setValue6(event.target.value);
+            dispatch({
+                type: value6Action.type,
+                payload: event.target.value,
+            });
         }
 
         validAll(event.target.value, number);
@@ -355,8 +422,18 @@ export const Verification = () => {
     
                 console.log(JSON.stringify(newRequest));
                 
-                setCity(false);
-                setSource(false);
+                // setCity(false);
+                dispatch({
+                    type: cityAction.type,
+                    payload: false,
+                });
+
+                // setSource(false);
+                dispatch({
+                    type: sourceAction.type,
+                    payload: false,
+                });
+
                 resetValue();
                 // setIsLoading(false);
                 dispatch({
