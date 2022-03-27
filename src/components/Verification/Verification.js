@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useCallback, useEffect, useRef } from 'react';
 import { VerificationUI } from '../../ui_components/VerificationUI';
 import cities from '../../json/cities.json';
 import sources from '../../json/sources.json';
@@ -59,12 +59,12 @@ export const Verification = () => {
         validAll(event.target.outerText, 6);
     };
 
-    const turnOffShowCitiesList = () => {
+    const turnOffShowCitiesList = useCallback(() => {
         dispatch({
             type: showCitiesListAction.type,
             payload: false,
         });
-    };
+    }, [dispatch]);
 
     const toggleShowCitiesList = () => {
         dispatch({
@@ -88,12 +88,12 @@ export const Verification = () => {
         </Div>
     ));
 
-    const turnOffShowSourceList = () => {
+    const turnOffShowSourceList = useCallback(() => {
         dispatch({
             type: showSourceListAction.type,
             payload: false,
         });
-    };
+    }, [dispatch]);
 
     const toggleShowSourceList = () => {
         dispatch({
@@ -395,10 +395,19 @@ export const Verification = () => {
         });
     };
 
-    const closeAllDropdowns = () => {
+    const closeAllDropdowns = useCallback(() => {
         turnOffShowCitiesList();
         turnOffShowSourceList();
-    };
+    }, [turnOffShowCitiesList, turnOffShowSourceList]);
+
+    useEffect(() => {
+        closeAllDropdowns();
+
+        dispatch({
+            type: isFormLoadingAction.type,
+            payload: false,
+        });
+    }, [dispatch, closeAllDropdowns]);
 
     return (
         <VerificationUI onSubmitForm={onSubmitForm} onSaveValueFromInput={onSaveValueFromInput} value1={value1} value2={value2} value3={value3} value4={value4} value5={value5} value6={value6} refInput1={refInput1} refInput2={refInput2} refInput3={refInput3} refInput4={refInput4} refInput5={refInput5} refInput6={refInput6} isLoading={isLoading} isSuccess={isSuccess} toggleAdditionalList={toggleAdditionalList} showAdditionalList={showAdditionalList} citiesList={citiesList} toggleShowCitiesList={toggleShowCitiesList} showCitiesList={showCitiesList} city={city} sourcesList={sourcesList} toggleShowSourceList={toggleShowSourceList} showSourceList={showSourceList} source={source} closeAllDropdowns={closeAllDropdowns} errorInput1={errorInput1} errorInput2={errorInput2} errorInput3={errorInput3} errorInput4={errorInput4} errorCity={errorCity} validAll={validAll} validCity={validCity}></VerificationUI>
