@@ -2,7 +2,7 @@ import { isFormLoadingAction, isFormSuccessAction, showAdditionalListAction, sho
 
 const initialState = {};
 
-export const statusesInTheAppReducer = (state = initialState, action) => {
+export const formStatusesReducer = (state = initialState, action) => {
     switch(action.type) {
         // case emailVerificationConfirmationWaitingIsTrue.type: {
         //     return {

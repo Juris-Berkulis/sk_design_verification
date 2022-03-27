@@ -5,7 +5,7 @@ import sources from '../../json/sources.json';
 import { Div } from '../../styles_components/DivStyle';
 import { Paragraph } from '../../styles_components/ParagraphStyle';
 import { useDispatch, useSelector } from 'react-redux';
-import { getStatusesInTheAppIsFormLoadingSelector, getStatusesInTheAppIsFormSuccessSelector, getStatusesInTheAppShowAdditionalListSelector, getStatusesInTheAppShowCitiesListCaseSelector, getStatusesInTheAppShowSourceListCaseSelector } from '../../store/AppSwitches/Selectors';
+import { getFormStatusesIsFormLoadingSelector, getFormStatusesIsFormSuccessSelector, getFormStatusesShowAdditionalListSelector, getFormStatusesShowCitiesListCaseSelector, getFormStatusesShowSourceListCaseSelector } from '../../store/AppSwitches/Selectors';
 import { isFormLoadingAction, isFormSuccessAction, showAdditionalListAction, showCitiesListAction, showSourceListAction } from '../../store/AppSwitches/Action';
 import { getFormErrorsErrorCityCaseSelector, getFormErrorsErrorInput1CaseSelector, getFormErrorsErrorInput2CaseSelector, getFormErrorsErrorInput3CaseSelector, getFormErrorsErrorInput4CaseSelector } from '../../store/FormErrors/Selectors';
 import { errorCityAction, errorInput1Action, errorInput2Action, errorInput3Action, errorInput4Action } from '../../store/FormErrors/Action';
@@ -21,11 +21,11 @@ export const Verification = () => {
 
     const dispatch = useDispatch();
 
-    const isLoading = useSelector(getStatusesInTheAppIsFormLoadingSelector);
-    const isSuccess = useSelector(getStatusesInTheAppIsFormSuccessSelector);
-    const showAdditionalList = useSelector(getStatusesInTheAppShowAdditionalListSelector);
-    const showCitiesList = useSelector(getStatusesInTheAppShowCitiesListCaseSelector);
-    const showSourceList = useSelector(getStatusesInTheAppShowSourceListCaseSelector);
+    const isLoading = useSelector(getFormStatusesIsFormLoadingSelector);
+    const isSuccess = useSelector(getFormStatusesIsFormSuccessSelector);
+    const showAdditionalList = useSelector(getFormStatusesShowAdditionalListSelector);
+    const showCitiesList = useSelector(getFormStatusesShowCitiesListCaseSelector);
+    const showSourceList = useSelector(getFormStatusesShowSourceListCaseSelector);
 
     // const [value1, setValue1] = useState('');
     // const [value2, setValue2] = useState('');

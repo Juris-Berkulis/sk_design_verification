@@ -1,4 +1,4 @@
-export const getStatusesInTheAppRootSelector = (state) => state.statusesInTheApp;
+export const getFormStatusesStoreRootSelector = (state) => state.formStatusesStore;
 // export const getStatusesInTheAppIsEmailVerificationConfirmationWaitingSelector = (state) => getStatusesInTheAppRootSelector(state).isEmailVerificationConfirmationWaiting || null;
 // export const getStatusesInTheAppCountdownForLetterRequestIsNumberSelector = (state) => getStatusesInTheAppRootSelector(state).countdownForLetterRequestIsNumber || null;
 // export const getStatusesInTheAppLastAuthorizationDateAndTimeSelector = (state) => getStatusesInTheAppRootSelector(state).lastAuthorizationDateAndTime || null;
@@ -9,8 +9,8 @@ export const getStatusesInTheAppRootSelector = (state) => state.statusesInTheApp
 // export const getStatusesInTheAppChatsCountSelectedSelector = (state) => getStatusesInTheAppRootSelector(state).chatsCountSelected;
 // export const getStatusesInTheAppEventForPWAInstallationSelector = (state) => getStatusesInTheAppRootSelector(state).eventForPWAInstallationCase || null;
 
-export const getStatusesInTheAppIsFormLoadingSelector = (state) => getStatusesInTheAppRootSelector(state).isFormLoadingCase || false;
-export const getStatusesInTheAppIsFormSuccessSelector = (state) => getStatusesInTheAppRootSelector(state).isFormSuccessCase || false;
-export const getStatusesInTheAppShowAdditionalListSelector = (state) => getStatusesInTheAppRootSelector(state).showAdditionalListCase || false;
-export const getStatusesInTheAppShowCitiesListCaseSelector = (state) => getStatusesInTheAppRootSelector(state).showCitiesListCase || false;
-export const getStatusesInTheAppShowSourceListCaseSelector = (state) => getStatusesInTheAppRootSelector(state).showSourceListCase || false;
+export const getFormStatusesIsFormLoadingSelector = (state) => getFormStatusesStoreRootSelector(state).isFormLoadingCase || false;
+export const getFormStatusesIsFormSuccessSelector = (state) => getFormStatusesStoreRootSelector(state).isFormSuccessCase || false;
+export const getFormStatusesShowAdditionalListSelector = (state) => getFormStatusesStoreRootSelector(state).showAdditionalListCase || false;
+export const getFormStatusesShowCitiesListCaseSelector = (state) => getFormStatusesStoreRootSelector(state).showCitiesListCase || false;
+export const getFormStatusesShowSourceListCaseSelector = (state) => getFormStatusesStoreRootSelector(state).showSourceListCase || false;
