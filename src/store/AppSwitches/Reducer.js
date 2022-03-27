@@ -1,15 +1,4 @@
-import { 
-    // appTheme,
-    // aquariumStatus,
-    // chatsCount,
-    // countdownForLetterRequest, 
-    // emailVerificationConfirmationWaitingIsFalse, 
-    // emailVerificationConfirmationWaitingIsTrue, 
-    // eventForPWAInstallation, 
-    // lastAuthorization,
-    // onlySelectedChats,
-    // valueInChatsListInput
-} from './Action';
+import { isFormLoadingAction, isFormSuccessAction, showAdditionalListAction, showCitiesListAction, showSourceListAction } from './Action';
 
 const initialState = {};
 
@@ -75,6 +64,37 @@ export const statusesInTheAppReducer = (state = initialState, action) => {
         //         eventForPWAInstallationCase: action.payload,
         //     }
         // }
+
+        case isFormLoadingAction.type: {
+            return {
+                ...state,
+                isFormLoadingCase: action.payload,
+            }
+        }
+        case isFormSuccessAction.type: {
+            return {
+                ...state,
+                isFormSuccessCase: action.payload,
+            }
+        }
+        case showAdditionalListAction.type: {
+            return {
+                ...state,
+                showAdditionalListCase: action.payload,
+            }
+        }
+        case showCitiesListAction.type: {
+            return {
+                ...state,
+                showCitiesListCase: action.payload,
+            }
+        }
+        case showSourceListAction.type: {
+            return {
+                ...state,
+                showSourceListCase: action.payload,
+            }
+        }
         default: {
             return state
         }

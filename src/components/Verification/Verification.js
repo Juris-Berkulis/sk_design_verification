@@ -4,13 +4,24 @@ import cities from '../../json/cities.json';
 import sources from '../../json/sources.json';
 import { Div } from '../../styles_components/DivStyle';
 import { Paragraph } from '../../styles_components/ParagraphStyle';
+import { useDispatch, useSelector } from 'react-redux';
+import { getStatusesInTheAppIsFormLoadingSelector, getStatusesInTheAppIsFormSuccessSelector, getStatusesInTheAppShowAdditionalListSelector, getStatusesInTheAppShowCitiesListCaseSelector, getStatusesInTheAppShowSourceListCaseSelector } from '../../store/AppSwitches/Selectors';
+import { isFormLoadingAction, isFormSuccessAction, showAdditionalListAction, showCitiesListAction, showSourceListAction } from '../../store/AppSwitches/Action';
 
 export const Verification = () => {
-    const [isLoading, setIsLoading] = useState(false);
-    const [isSuccess, setIsSuccess] = useState(false);
-    const [showAdditionalList, setShowAdditionalList] = useState(false);
-    const [showCitiesList, setShowCitiesList] = useState(false);
-    const [showSourceList, setShowSourceList] = useState(false);
+    // const [isLoading, setIsLoading] = useState(false);
+    // const [isSuccess, setIsSuccess] = useState(false);
+    // const [showAdditionalList, setShowAdditionalList] = useState(false);
+    // const [showCitiesList, setShowCitiesList] = useState(false);
+    // const [showSourceList, setShowSourceList] = useState(false);
+
+    const dispatch = useDispatch();
+
+    const isLoading = useSelector(getStatusesInTheAppIsFormLoadingSelector);
+    const isSuccess = useSelector(getStatusesInTheAppIsFormSuccessSelector);
+    const showAdditionalList = useSelector(getStatusesInTheAppShowAdditionalListSelector);
+    const showCitiesList = useSelector(getStatusesInTheAppShowCitiesListCaseSelector);
+    const showSourceList = useSelector(getStatusesInTheAppShowSourceListCaseSelector);
 
     const [value1, setValue1] = useState('');
     const [value2, setValue2] = useState('');
@@ -44,12 +55,23 @@ export const Verification = () => {
         validAll(event.target.outerText, 6);
     };
 
+    const turnOffShowCitiesList = () => {
+        dispatch({
+            type: showCitiesListAction.type,
+            payload: false,
+        });
+    };
+
     const toggleShowCitiesList = () => {
-        setShowCitiesList(!showCitiesList);
+        // setShowCitiesList(!showCitiesList);
+        dispatch({
+            type: showCitiesListAction.type,
+            payload: !showCitiesList,
+        });
     };
 
     const citiesList = cities.map((item, index) => (
-        <Div onClick={() => setShowCitiesList(false)} cursor='pointer' key={item.id}>
+        <Div onClick={() => turnOffShowCitiesList()} cursor='pointer' key={item.id}>
             <Div onClick={getCity} height='30px' padding='5px 15px' color='#353238' backgroundColorHover='#0086A8' colorHover='#ffffff' value={item.name}>
                 <Paragraph lineHeight='20px' colorHover={true}>{item.name}</Paragraph>
             </Div>
@@ -63,12 +85,23 @@ export const Verification = () => {
         </Div>
     ));
 
+    const turnOffShowSourceList = () => {
+        dispatch({
+            type: showSourceListAction.type,
+            payload: false,
+        });
+    };
+
     const toggleShowSourceList = () => {
-        setShowSourceList(!showSourceList);
+        // setShowSourceList(!showSourceList);
+        dispatch({
+            type: showSourceListAction.type,
+            payload: !showSourceList,
+        });
     };
 
     const sourcesList = sources.map((item, index) => (
-        <Div onClick={() => setShowSourceList(false)} cursor='pointer' key={item}>
+        <Div onClick={() => turnOffShowSourceList()} cursor='pointer' key={item}>
             <Div onClick={getSource} height='30px' padding='5px 15px' color='#353238' backgroundColorHover='#0086A8' colorHover='#ffffff' value={item}>
                 <Paragraph lineHeight='20px' colorHover={true}>{item}</Paragraph>
             </Div>
@@ -83,7 +116,11 @@ export const Verification = () => {
     ));
     
     const resetValue = () => {
-        setIsSuccess(false);
+        // setIsSuccess(false);
+        dispatch({
+            type: isFormSuccessAction.type,
+            payload: false,
+        });
 
         setValue1('');
         setValue2('');
@@ -195,9 +232,17 @@ export const Verification = () => {
             && 
             isValidCity
         ) {
-            setIsSuccess(true);
+            // setIsSuccess(true);
+            dispatch({
+                type: isFormSuccessAction.type,
+                payload: true,
+            });
         } else {
-            setIsSuccess(false);
+            // setIsSuccess(false);
+            dispatch({
+                type: isFormSuccessAction.type,
+                payload: false,
+            });
         }
     };
 
@@ -223,7 +268,12 @@ export const Verification = () => {
         event.preventDefault();
 
         if (isSuccess) {
-            setIsLoading(true);
+            // setIsLoading(true);
+            dispatch({
+                type: isFormLoadingAction.type,
+                payload: true,
+            });
+
             closeAllDropdowns();
 
             const timerId = setTimeout(() => {
@@ -243,19 +293,31 @@ export const Verification = () => {
                 setCity(false);
                 setSource(false);
                 resetValue();
-                setIsLoading(false);
+                // setIsLoading(false);
+                dispatch({
+                    type: isFormLoadingAction.type,
+                    payload: false,
+                });
+
                 clearTimeout(timerId);
             }, 2000);
         }
     };
 
     const toggleAdditionalList = () => {
-        setShowAdditionalList(!showAdditionalList);
+        // setShowAdditionalList(!showAdditionalList);
+        dispatch({
+            type: showAdditionalListAction.type,
+            payload: !showAdditionalList,
+        });
     };
 
     const closeAllDropdowns = () => {
-        setShowCitiesList(false);
-        setShowSourceList(false);
+        // setShowCitiesList(false);
+        turnOffShowCitiesList();
+
+        // setShowSourceList(false);
+        turnOffShowSourceList();
     };
 
     return (
