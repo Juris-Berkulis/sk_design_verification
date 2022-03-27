@@ -165,8 +165,8 @@ export const Verification = () => {
         }
     };
 
-    const validCity = (city, number=6) => {
-        if (city) {
+    const validCity = (newCity=city, number=6) => {
+        if (newCity) {
             setErrorCity(false);
             return true
         } else {
