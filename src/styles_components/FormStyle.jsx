@@ -17,6 +17,7 @@ const FormStyle = styledComponents.form`
     @media ${props => props.theme.media.width.stair1} {
         width: 90vw;
         margin: 0 5vw 15vh;
+        min-width: 0;
     }
 `
 

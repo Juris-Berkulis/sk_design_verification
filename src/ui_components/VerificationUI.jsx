@@ -19,6 +19,9 @@ import { Span } from '../styles_components/SpanStyle';
 import { ImgSVG } from '../styles_components/ImgSVGStyle';
 import { ParagraphError } from '../styles_components/ParagraphErrorStyle';
 import { ArrowImgSVG } from '../styles_components/ArrowSVGStyle';
+import { LogoLetterDiv } from '../styles_components/LogoLetterDivStyle';
+import { LogoLetterDivSVG } from '../styles_components/LogoLetterDivSVGStyle';
+import { ParagraphLabel } from '../styles_components/ParagraphLabelStyle';
 
 export const VerificationUI = (props) => {
     return (
@@ -48,14 +51,14 @@ export const VerificationUI = (props) => {
                             </LogoLetterSVG>
                         </LogoLetter>
                         {/* <Span fontSize='67px'>&nbsp;</Span> */}
-                        <Div position='relative' height='67px' width='62px' margin='0 13px 0 0'>
-                            <LogoLetterSVG style={{position: 'absolute', top: '0', left: '0'}} width="51" height="63" viewBox="0 0 51 63" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <LogoLetterDiv position='relative' height='67' width='62' margin='0 13px 0 0'>
+                            <LogoLetterDivSVG style={{position: 'absolute', top: '0', left: '0'}} width="82%" height="94%" viewBox="0 0 51 63" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M8.93119 47.275V8.68386H28.87C35.409 8.68386 40.6617 10.2918 44.628 13.2933L50.5239 6.86149C49.3447 6.0039 48.1655 5.25352 46.8791 4.50314C41.8409 1.8232 35.8378 0.429626 28.87 0.429626H0.141006V62.2827L5.39368 56.494C7.64483 54.0285 8.93119 50.7053 8.93119 47.275Z" fill="#0086A8"/>
-                            </LogoLetterSVG>
-                            <LogoLetterSVG style={{position: 'absolute', right: '0', bottom: '0'}} width="57" height="55" viewBox="0 0 57 55" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            </LogoLetterDivSVG>
+                            <LogoLetterDivSVG style={{position: 'absolute', right: '0', bottom: '0'}} width="92%" height="82%" viewBox="0 0 57 55" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M50.527 0.186157L44.2023 7.154C46.0247 10.9059 46.9895 15.6226 46.9895 21.0897C46.9895 29.3439 44.8455 35.5614 40.6648 39.9565C36.4841 44.3516 30.481 46.6027 22.7628 46.6027H13.5438C10.2207 46.6027 7.00477 47.9963 4.75362 50.4618L0.787292 54.7498H22.6556C29.6235 54.7498 35.6265 53.3562 40.772 50.569C45.8103 47.7819 49.5622 43.9228 52.2422 38.7773C54.9221 33.739 56.2085 27.7359 56.2085 20.9825C56.2085 14.1218 54.9221 8.22598 52.2422 3.18769C51.8134 2.22292 51.1702 1.15094 50.527 0.186157Z" fill="#353238"/>
-                            </LogoLetterSVG>
-                        </Div>
+                            </LogoLetterDivSVG>
+                        </LogoLetterDiv>
                         <LogoLetter marginRight='6px'>
                             <LogoLetterSVG width="48" height="68" viewBox="0 0 48 68" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M9.54077 59.7099H47.3815L44.0584 67.857H0.750549V0.429626H46.7384L43.4152 8.57665H9.54077V29.909H38.4841L35.161 38.056H9.54077V59.7099Z" fill="#353238"/>
@@ -141,7 +144,7 @@ export const VerificationUI = (props) => {
                                     props.city
                                 )
                                 ? 
-                                <Paragraph style={{position: 'absolute', top: '-5px', left: '10px'}} color={props.showCitiesList ? '#0086A8' : '#828282'} padding='0 5px' fontSize='12px' lineHeight='100%' backgroundColor='#ffffff'>Выберите город *</Paragraph>
+                                <ParagraphLabel style={{position: 'absolute', top: '-5px', left: '10px'}} color={props.showCitiesList ? '#0086A8' : '#828282'} padding='0 5px' fontSize='12px' lineHeight='100%' backgroundColor='#ffffff'>Выберите город *</ParagraphLabel>
                                 : 
                                 null
                             }
@@ -225,7 +228,7 @@ export const VerificationUI = (props) => {
                                             props.source
                                         )
                                         ? 
-                                        <Paragraph style={{position: 'absolute', top: '-5px', left: '10px'}} color={props.showSourceList ? '#0086A8' : '#828282'} padding='0 5px' fontSize='12px' lineHeight='100%' backgroundColor='#ffffff'>Откуда узнали про нас?</Paragraph>
+                                        <ParagraphLabel style={{position: 'absolute', top: '-5px', left: '10px'}} color={props.showSourceList ? '#0086A8' : '#828282'} padding='0 5px' fontSize='12px' lineHeight='100%' backgroundColor='#ffffff'>Откуда узнали про нас?</ParagraphLabel>
                                         : 
                                         null
                                     }

@@ -15,6 +15,9 @@ export const LabelStyle = styledComponents.label`
     line-height: 100%;
     letter-spacing: 0.25px;
     background-color: #ffffff;
+    @media ${props => props.theme.media.width.stair2} {
+        font-size: 8px;;
+    }
 `
 
 export const Label = ({children, ...props}) => {

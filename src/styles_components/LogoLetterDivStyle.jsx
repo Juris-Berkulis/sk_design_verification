@@ -1,10 +1,10 @@
 import React from 'react';
 import styledComponents from 'styled-components';
+import { Div } from './DivStyle';
 
-const LogoLetterSVGStyle = styledComponents.svg`
+const LogoLetterDivStyle = styledComponents(Div)`
     width: ${props => props.width + 'px'};
     height: ${props => props.height + 'px'};
-    fill: ${props => props.fill};
     @media ${props => props.theme.media.width.stair1} {
         width: ${props => props.width / 2 + 'px'};
         height: ${props => props.height / 2 + 'px'};
@@ -15,8 +15,8 @@ const LogoLetterSVGStyle = styledComponents.svg`
     }
 `
 
-export const LogoLetterSVG = ({children, ...props}) => {
+export const LogoLetterDiv = ({children, ...props}) => {
     return (
-        <LogoLetterSVGStyle {...props}>{children}</LogoLetterSVGStyle>
+        <LogoLetterDivStyle {...props}>{children}</LogoLetterDivStyle>
     )
 };

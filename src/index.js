@@ -11,9 +11,11 @@ export const theme = {
   media: {
     width: {
       stair1: '(max-width: 1240px)',
+      stair2: '(max-width: 480px)',
+      stair3: '(max-width: 320px)',
     },
   },
-}
+};
 
 const GlobalStyles = createGlobalStyle`
   * {

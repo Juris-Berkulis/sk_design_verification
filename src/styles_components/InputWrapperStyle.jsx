@@ -12,6 +12,9 @@ export const InputWrapperStyle = styledComponents.div`
     &:focus-within {
         color: ${props => props.isError ? '#EB5E55' : '#0086A8'};
     }
+    @media ${props => props.theme.media.width.stair2} {
+        width: 100%;
+    }
 `
 
 export const InputWrapper = (props) => {
