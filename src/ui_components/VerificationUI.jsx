@@ -92,7 +92,7 @@ export const VerificationUI = (props) => {
                 <Form onSubmit={props.onSubmitForm} margin='2vh 2vw' padding='40px 30px'>
                     <InputWrapperStyle width='47%' isError={props.errorInput1 ? true : false}>
                         <LabelStyle htmlFor='1'>Ваше имя *</LabelStyle>
-                        <InputStyle inputRef={props.refInput1} onFocus={props.closeAllDropdowns} id='1' placeholder='Иван' onChange={(event) => props.onSaveValueFromInput(event, 1)} value={props.value1} isError={props.errorInput1 ? true : false}></InputStyle>
+                        <InputStyle onFocus={props.closeAllDropdowns} id='1' placeholder='Иван' onChange={(event) => props.onSaveValueFromInput(event, 1)} value={props.value1} isError={props.errorInput1 ? true : false}></InputStyle>
                         {
                             props.errorInput1 
                             ? 
@@ -103,7 +103,7 @@ export const VerificationUI = (props) => {
                     </InputWrapperStyle>
                     <InputWrapperStyle width='47%' isError={props.errorInput2 ? true : false}>
                         <LabelStyle htmlFor='2'>Номер телефона *</LabelStyle>
-                        <InputStyle inputRef={props.refInput2} onFocus={props.closeAllDropdowns} id='2' placeholder='+7 (000) 000-00-00' onChange={(event) => props.onSaveValueFromInput(event, 2)} value={props.value2} isError={props.errorInput2 ? true : false}></InputStyle>
+                        <InputStyle onFocus={props.closeAllDropdowns} id='2' placeholder='+7 (000) 000-00-00' onChange={(event) => props.onSaveValueFromInput(event, 2)} value={props.value2} isError={props.errorInput2 ? true : false}></InputStyle>
                         {
                             props.errorInput2 
                             ? 
@@ -114,7 +114,7 @@ export const VerificationUI = (props) => {
                     </InputWrapperStyle>
                     <InputWrapperStyle width='47%' isError={props.errorInput3 ? true : false}>
                         <LabelStyle htmlFor='3'>E-mail *</LabelStyle>
-                        <InputStyle inputRef={props.refInput3} onFocus={props.closeAllDropdowns} id='3' placeholder='example@skdesign.ru' onChange={(event) => props.onSaveValueFromInput(event, 3)} value={props.value3} isError={props.errorInput3 ? true : false}></InputStyle>
+                        <InputStyle onFocus={props.closeAllDropdowns} id='3' placeholder='example@skdesign.ru' onChange={(event) => props.onSaveValueFromInput(event, 3)} value={props.value3} isError={props.errorInput3 ? true : false}></InputStyle>
                         {
                             props.errorInput3 
                             ? 
@@ -125,7 +125,7 @@ export const VerificationUI = (props) => {
                     </InputWrapperStyle>
                     <InputWrapperStyle width='47%' isError={props.errorInput4 ? true : false}>
                         <LabelStyle htmlFor='4'>Ссылка на профиль *</LabelStyle>
-                        <InputStyle inputRef={props.refInput4} onFocus={props.closeAllDropdowns} id='4' placeholder='instagram.com/skde…' onChange={(event) => props.onSaveValueFromInput(event, 4)} value={props.value4} isError={props.errorInput4 ? true : false}></InputStyle>
+                        <InputStyle onFocus={props.closeAllDropdowns} id='4' placeholder='instagram.com/skde…' onChange={(event) => props.onSaveValueFromInput(event, 4)} value={props.value4} isError={props.errorInput4 ? true : false}></InputStyle>
                         {
                             props.errorInput4 
                             ? 
@@ -189,7 +189,7 @@ export const VerificationUI = (props) => {
                     </Div>
                     <InputWrapperStyle>
                         <LabelStyle htmlFor='5'>Название организации/студии</LabelStyle>
-                        <InputStyle inputRef={props.refInput5} onFocus={props.closeAllDropdowns} id='5' placeholder='SK Design' onChange={(event) => props.onSaveValueFromInput(event, 5)} value={props.value5}></InputStyle>
+                        <InputStyle onFocus={props.closeAllDropdowns} id='5' placeholder='SK Design' onChange={(event) => props.onSaveValueFromInput(event, 5)} value={props.value5}></InputStyle>
                     </InputWrapperStyle>
                     <Paragraph margin='0 0 20px' cursor='pointer' zIndex='6' onClick={props.toggleAdditionalList}>
                         {
@@ -216,7 +216,7 @@ export const VerificationUI = (props) => {
                         <>
                             <InputWrapperStyle width='100%'>
                                 <LabelStyle htmlFor='6'>Получатель</LabelStyle>
-                                <InputStyle inputRef={props.refInput6} onFocus={props.closeAllDropdowns} id='6' placeholder='ФИО' onChange={(event) => props.onSaveValueFromInput(event, 6)} value={props.value6}></InputStyle>
+                                <InputStyle onFocus={props.closeAllDropdowns} id='6' placeholder='ФИО' onChange={(event) => props.onSaveValueFromInput(event, 6)} value={props.value6}></InputStyle>
                             </InputWrapperStyle>
                             <Div height='50px' margin='0 0 20px' zIndex='7'>
                                 <Div onClick={props.toggleShowSourceList} position='relative' height='50px' border={props.showSourceList ? '2px solid #0086A8' : '2px solid #E3E3E3'} borderRadius='8px' padding='18px 30px 18px 15px' cursor='pointer'>

@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { VerificationUI } from '../../ui_components/VerificationUI';
 import cities from '../../json/cities.json';
 import sources from '../../json/sources.json';
@@ -35,13 +35,6 @@ export const Verification = () => {
     const errorInput3 = useSelector(getFormErrorsErrorInput3CaseSelector);
     const errorInput4 = useSelector(getFormErrorsErrorInput4CaseSelector);
     const errorCity = useSelector(getFormErrorsErrorCityCaseSelector);
-
-    const refInput1 = useRef(null);
-    const refInput2 = useRef(null);
-    const refInput3 = useRef(null);
-    const refInput4 = useRef(null);
-    const refInput5 = useRef(null);
-    const refInput6 = useRef(null);
 
     const getSource = (event) => {
         dispatch({
@@ -410,6 +403,6 @@ export const Verification = () => {
     }, [dispatch, closeAllDropdowns]);
 
     return (
-        <VerificationUI onSubmitForm={onSubmitForm} onSaveValueFromInput={onSaveValueFromInput} value1={value1} value2={value2} value3={value3} value4={value4} value5={value5} value6={value6} refInput1={refInput1} refInput2={refInput2} refInput3={refInput3} refInput4={refInput4} refInput5={refInput5} refInput6={refInput6} isLoading={isLoading} isSuccess={isSuccess} toggleAdditionalList={toggleAdditionalList} showAdditionalList={showAdditionalList} citiesList={citiesList} toggleShowCitiesList={toggleShowCitiesList} showCitiesList={showCitiesList} city={city} sourcesList={sourcesList} toggleShowSourceList={toggleShowSourceList} showSourceList={showSourceList} source={source} closeAllDropdowns={closeAllDropdowns} errorInput1={errorInput1} errorInput2={errorInput2} errorInput3={errorInput3} errorInput4={errorInput4} errorCity={errorCity} validAll={validAll} validCity={validCity}></VerificationUI>
+        <VerificationUI onSubmitForm={onSubmitForm} onSaveValueFromInput={onSaveValueFromInput} value1={value1} value2={value2} value3={value3} value4={value4} value5={value5} value6={value6}  isLoading={isLoading} isSuccess={isSuccess} toggleAdditionalList={toggleAdditionalList} showAdditionalList={showAdditionalList} citiesList={citiesList} toggleShowCitiesList={toggleShowCitiesList} showCitiesList={showCitiesList} city={city} sourcesList={sourcesList} toggleShowSourceList={toggleShowSourceList} showSourceList={showSourceList} source={source} closeAllDropdowns={closeAllDropdowns} errorInput1={errorInput1} errorInput2={errorInput2} errorInput3={errorInput3} errorInput4={errorInput4} errorCity={errorCity} validAll={validAll} validCity={validCity}></VerificationUI>
     )
 };
