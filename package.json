@@ -51,7 +51,7 @@
   },
   "git": {
     "scripts": {
-      "pre-push": "surge --project ./ --domain sk-design-verification.surge.sh"
+      "pre-push": "surge --project ./ --domain https://sk-design-verification.surge.sh"
     }
   }
 }
